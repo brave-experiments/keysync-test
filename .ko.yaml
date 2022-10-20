@@ -1,0 +1,6 @@
+builds:
+- id: .
+  dir: .
+  main: .
+  ldflags:
+  - -extldflags "-static"
