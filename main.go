@@ -16,9 +16,10 @@ type keyMaterial struct {
 func main() {
 	enclave := nitriding.NewEnclave(
 		&nitriding.Config{
-			FQDN:    "TODO: EC2-Host1",
-			Port:    8443,
-			UseACME: true,
+			SOCKSProxy: "socks5://127.0.0.1:1080",
+			FQDN:       "TODO: EC2-Host1",
+			Port:       8443,
+			UseACME:    true,
 		},
 	)
 	go func() {
