@@ -1,5 +1,5 @@
 [Unit]
-Description=Proxy between the enclave and host
+Description=SOCKS proxy for the enclave to contact the internet
 After=network.target
 
 [Service]
@@ -7,6 +7,12 @@ ExecStart=/opt/nitro-shim/socksproxy
 Environment=SOCKS_PROXY_LISTEN_ADDR=127.0.0.1:1080
 Environment=SOCKS_PROXY_ALLOWED_ADDRS=
 Environment=SOCKS_PROXY_ALLOWED_FQDNS=acme-v02.api.letsencrypt.org,nitro.nymity.ch
+# Red Hat 7 era sandboxing
+ProtectSystem=full
+ProtectHome=yes
+PrivateDevices=yes
+NoNewPrivileges=yes
+PrivateTmp=yes
 
 [Install]
 WantedBy=multi-user.target
