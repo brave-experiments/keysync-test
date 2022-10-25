@@ -1,0 +1,16 @@
+[Unit]
+Description=Proxy between the enclave and host
+After=network.target
+
+[Service]
+ExecStart=/opt/nitro-shim/viproxy
+Environment=OUT_ADDRS=4:8443,4:80,127.0.0.1:1080
+Environment=IN_ADDRS=:8443,:80,3:1080
+ProtectSystem=full
+ProtectHome=yes
+PrivateDevices=yes
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target
